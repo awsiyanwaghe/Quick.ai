@@ -15,11 +15,20 @@ await connectCloudinary()
 const port = process.env.PORT || 3000
 
 
+const allowedOrigins = ['https://quick-ai-1.onrender.com']
+
 app.use(cors({
-    origin:['*','https://quick-ai-1.onrender.com/'],
-    methods:['GET','POST','PATCH',"PUT",'DELETE'],
-    credentials:true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
 }))
+
 
 app.use(express.json())
 app.use(clerkMiddleware())
