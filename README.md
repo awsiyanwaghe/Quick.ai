@@ -153,4 +153,4 @@ npm run dev
 
 ## 🧠 Author
 
-Made with ❤️ by [AWsiyan Waghe]
+Made with ❤️ by Awsiyan Waghe
